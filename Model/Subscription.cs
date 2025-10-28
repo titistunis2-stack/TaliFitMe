@@ -8,10 +8,10 @@ namespace Model
 {
     public class Subscription : BaseEntity
     {
-        private string name_of_subscription;
+        private string name_of_sub;
         private double price;
 
-        public string Name_of_subscription { get => name_of_subscription; set => name_of_subscription = value; }
+        public string Name_of_sub { get => name_of_sub; set => name_of_sub = value; }
         public double Price { get => price; set => price = value; }
     }
 }

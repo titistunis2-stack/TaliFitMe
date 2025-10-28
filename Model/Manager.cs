@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Manger: Person
+    public class Manager: Person
     {
     }
 }

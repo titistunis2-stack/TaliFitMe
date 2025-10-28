@@ -12,7 +12,7 @@ namespace ViewModel
     {
         public GenderList SelectAll()
         {
-            command.CommandText = $"SELECT * FROM GenderTbl";
+            command.CommandText = $"SELECT Gender.* FROM Gender";
             GenderList groupList = new GenderList(base.Select());
             return groupList;
         }
@@ -26,6 +26,16 @@ namespace ViewModel
         public override BaseEntity NewEntity()
         {
             return new Gender();
+        }
+        static private GenderList list = new GenderList();
+
+        public static Gender SelectById(int id)
+        {
+            GenderDB db = new GenderDB();
+            list = db.SelectAll();
+
+            Gender g = list.Find(item => item.Id == id);
+            return g;
         }
     }
 }
