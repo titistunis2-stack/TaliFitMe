@@ -11,10 +11,8 @@ namespace ViewModel
     {
         public TraineeList SelectAll()
         {
-            command.CommandText = $"SELECT  Person.first_name, Person.last_name, Person.num_id," +
-                $" Person.telephone, Person.email, Person.born_date, Person.photo," +
-                $" Person.user_name, Person.pass, Person.id_gender," +
-                $" Trainee.health_Declaration, Trainee.joining_date, Trainee.id_Sub FROM  (Trainee INNER JOIN Person ON Trainee.id = Person.id)";
+            command.CommandText = $"SELECT Person.id, Person.first_name, Person.last_name, Person.telephone, Person.num_id, Person.email, Person.born_date, Person.photo, Person.user_name, Person.pass, Person.id_gender, Trainee.health_Declaration, Trainee.joining_date, Trainee.id_Sub " +
+                $"FROM (Trainee INNER JOIN Person ON Trainee.id = Person.id)";
             TraineeList groupList = new TraineeList(base.Select());
             return groupList;
         }

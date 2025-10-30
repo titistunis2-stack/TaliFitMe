@@ -13,7 +13,7 @@ namespace ViewModel
     {
         public Kinds_of_workoutsList SelectAll()
         {
-            command.CommandText = $"SELECT Kinds_of_workouts.* FROM  Kinds_of_workouts";
+            command.CommandText = $"SELECT Kinds_of_workouts.* FROM Kinds_of_workouts";
             Kinds_of_workoutsList pList = new Kinds_of_workoutsList(base.Select());
             return pList;
         }
@@ -21,7 +21,7 @@ namespace ViewModel
         {
             Kinds_of_workouts kw = entity as Kinds_of_workouts;
             kw.Name_of_workout = reader["name_of_workout"].ToString();
-            kw.Max_amount_of_people = int.Parse (reader["max_amount_of_people"].ToString());
+            kw.Max_amount_of_people = int.Parse(reader["max_amount_of_people"].ToString());
            
             base.CreateModel(entity);
             return kw;
@@ -34,7 +34,7 @@ namespace ViewModel
         public static Kinds_of_workouts SelectById(int id)
         {
             Kinds_of_workoutsDB db = new Kinds_of_workoutsDB();
-            Kinds_of_workoutsList list = db.SelectAll();
+            list = db.SelectAll();
 
             Kinds_of_workouts g = list.Find(item => item.Id == id);
             return g;
