@@ -10,8 +10,8 @@ using System.Threading.Tasks;
     {
         public abstract class BaseDB
         {
-            protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source= \"C:\\Users\\User\\source\\repos\\TaliFitMe\\ViewModel\\talistu2506.accdb\"";
-
+            protected static string connectionString = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source= \"C:\\Users\\User\\source\\repos\\titistunis2-stack\\TaliFitMe\\ViewModel\\talistu2506.accdb\"";
+        //     C:\Users\User\source\repos\titistunis2-stack\TaliFitMe\ViewModel
 
             //protected static string connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="
             //              + System.IO.Path.GetFullPath(System.Reflection.Assembly.GetExecutingAssembly().Location

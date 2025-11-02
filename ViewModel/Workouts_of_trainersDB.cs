@@ -12,7 +12,7 @@ namespace ViewModel
     {
         public Workouts_of_trainersList SelectAll()
         {
-            command.CommandText = $"SELECT  Workouts_of_trainers.* FROM Workouts_of_trainers";
+            command.CommandText = $"SELECT  id, id_trainer, id_kind_of_workouts FROM  Workouts_of_trainers";
            Workouts_of_trainersList groupList = new Workouts_of_trainersList(base.Select());
             return groupList;
         }
@@ -20,7 +20,7 @@ namespace ViewModel
         {
            Workouts_of_trainers w = entity as Workouts_of_trainers;
            w.Id_trainer = TrainerDB.SelectById((int)reader["id_trainer"]);
-           w.Id_kindsOfWorkouts= Kinds_of_workoutsDB.SelectById((int)reader["id_kindsOfWorkouts"]);
+           w.Id_kindsOfWorkouts= Kinds_of_workoutsDB.SelectById((int)reader["id_kind_of_workouts"]);
             base.CreateModel(entity);
             return w;
         }

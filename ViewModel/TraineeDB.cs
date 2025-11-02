@@ -11,14 +11,17 @@ namespace ViewModel
     {
         public TraineeList SelectAll()
         {
-            command.CommandText = $"SELECT Person.id, Person.first_name, Person.last_name, Person.telephone, Person.num_id, Person.email, Person.born_date, Person.photo, Person.user_name, Person.pass, Person.id_gender, Trainee.health_Declaration, Trainee.joining_date, Trainee.id_Sub " +
-                $"FROM (Trainee INNER JOIN Person ON Trainee.id = Person.id)";
+            command.CommandText = $"SELECT  Person.id, Person.first_name, Person.last_name, Person.telephone, Person.born_date, Person.photo, Person.user_name, Person.pass, Person.id_gender, Person.email, Person.num_id, Trainee.health_Declaration, "+
+                         $" Trainee.joining_date, Trainee.id_Sub "+
+                         $" FROM(Person INNER JOIN "+
+                         $" Trainee ON Person.id = Trainee.id)";
             TraineeList groupList = new TraineeList(base.Select());
             return groupList;
         }
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
             Trainee te = entity as Trainee;
+            var XX = reader["health_Declaration"].ToString();
             te.Health_Declaration = bool.Parse(reader["health_Declaration"].ToString());
             te.Joining_date = DateTime.Parse(reader["joining_date"].ToString());
             te.Id_Sub = SubscriptionDB.SelectById((int)reader["id_Sub"]);
