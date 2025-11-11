@@ -42,5 +42,32 @@ namespace ViewModel
             List_of_Exc_workouts g = list.Find(item => item.Id == id);
             return g;
         }
+
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            List_of_Exc_workouts l = entity as List_of_Exc_workouts;
+            if (l != null)
+            {
+                string sqlStr = $"UPDATE List_of_Exc_workouts " +
+                    $"SET Id_kindOf_workouts=@id_kindOf_workouts,Workout_date=@workout_date,Workout_time=@workout_time" +
+                    $" WHERE ID=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id_kindOf_workouts", l.Id_kindOf_workouts.Id));
+                command.Parameters.Add(new OleDbParameter("@workout_time", l.Workout_time));
+                command.Parameters.Add(new OleDbParameter("@workout_date", l.Workout_date));
+                command.Parameters.Add(new OleDbParameter("@id_trainer", l.Id_trainer.Id));
+                command.Parameters.Add(new OleDbParameter("@id", l.Id));
+            }
+        }
     }
 }

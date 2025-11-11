@@ -46,5 +46,35 @@ namespace ViewModel
             return g;
         }
 
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Person p = entity as Person;
+            if (p != null)
+            {
+                string sqlStr = $"UPDATE Person SET First_name=@first_name, Last_name=@last_name , Telephone=@telephone , Num_id=@num_id , Email=@email, Born_date=@born_date , Photo=@photo , User_name=@user_name , Pass=@pass , Id_gender=@id_gender WHERE ID=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@first_name", p.First_name));
+                command.Parameters.Add(new OleDbParameter("@last_name", p.Last_name));
+                command.Parameters.Add(new OleDbParameter("@telephone", p.Telephone));
+                command.Parameters.Add(new OleDbParameter("@num_id", p.Num_id));
+                command.Parameters.Add(new OleDbParameter("@email", p.Email));
+                command.Parameters.Add(new OleDbParameter("@born_date", p.Born_date));
+                command.Parameters.Add(new OleDbParameter("@photo", p.Photo));
+                command.Parameters.Add(new OleDbParameter("@user_name", p.User_name));
+                command.Parameters.Add(new OleDbParameter("@pass", p.Pass));
+                command.Parameters.Add(new OleDbParameter("@id_gender", p.Id_gender.Id));
+                command.Parameters.Add(new OleDbParameter("@id", p.Id));
+            }
+        }
     }
 }

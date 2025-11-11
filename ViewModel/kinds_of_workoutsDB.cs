@@ -40,41 +40,32 @@ namespace ViewModel
             return g;
         }
 
-        //שלב ב
-        //protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
-        //{
-        //    Person c = entity as Person;
-        //    if (c != null)
-        //    {
-        //        string sqlStr = $"DELETE FROM PersonTbl where id=@pid";
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
 
-        //        command.CommandText = sqlStr;
-        //        command.Parameters.Add(new OleDbParameter("@pid", c.Id));
-        //    }
-        //}
-        //protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
-        //{
-        //    Person c = entity as Person;
-        //    if (c != null)
-        //    {
-        //        string sqlStr = $"Insert INTO  PersonTbl (PersonName) VALUES (@cName)";
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
 
-        //        command.CommandText = sqlStr;
-        //        command.Parameters.Add(new OleDbParameter("@cName", c.PersonName));
-        //    }
-        //}
-
-        //protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
-        //{
-        //    Person c = entity as Person;
-        //    if (c != null)
-        //    {
-        //        string sqlStr = $"UPDATE PersonTbl  SET PersonName=@cName WHERE ID=@id";
-
-        //        command.CommandText = sqlStr;
-        //        command.Parameters.Add(new OleDbParameter("@cName", c.PersonName));
-        //        command.Parameters.Add(new OleDbParameter("@id", c.Id));
-        //    }
-        //}
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            
+            Kinds_of_workouts k = entity as Kinds_of_workouts;
+            if (k != null)
+            {
+                string sqlStr = $"UPDATE Kinds_of_workouts " +
+                    $"SET Name_of_workout=@name_of_workout,Max_amount_of_people=@max_amount_of_people" +
+                    $" WHERE ID=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@name_of_workout", k.Name_of_workout));
+                command.Parameters.Add(new OleDbParameter("@max_amount_of_workout", k.Max_amount_of_people));
+                command.Parameters.Add(new OleDbParameter("@id", k.Id));
+            }
+        }
     }
-}
+
+        
+    }

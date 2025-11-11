@@ -39,7 +39,30 @@ namespace ViewModel
             Trainer g = list.Find(item => item.Id == id);
             return g;
         }
-
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Trainer p = entity as Trainer;
+            if (p != null)
+            {
+                string sqlStr = $"UPDATE Trainer SET Paymet_per_hour=@paymet_per_hour,Certificate=@certificate,Experience=@experience,Description=@description " +
+                    $" WHERE ID=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@paymet_per_hour", p.Paymet_per_hour));
+                command.Parameters.Add(new OleDbParameter("@certificate", p.Certificate));
+                command.Parameters.Add(new OleDbParameter("@experience", p.Experience));
+                command.Parameters.Add(new OleDbParameter("@description", p.Description));
+                command.Parameters.Add(new OleDbParameter("@id", p.Id));
+            }
+        }
+        public override void Update(BaseEntity entity)
+        {
+            Trainer t = entity as Trainer;
+            if (t != null)
+            {
+                updated.Add(new ChangeEntity(this.CreateUpdatedSQL, entity));
+                updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
+            }
+        }
     }
 }
 

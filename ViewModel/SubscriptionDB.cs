@@ -38,5 +38,30 @@ namespace ViewModel
             Subscription g = list.Find(item => item.Id == id);
             return g;
         }
+
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Subscription p = entity as Subscription;
+            if (p != null)
+            {
+                string sqlStr = $"UPDATE Subscription SET Name_of_sub=@Name_of_sub" +
+                    $",Price=@price" +
+                    $" WHERE ID=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@name_of_sub", p.Name_of_sub));
+                command.Parameters.Add(new OleDbParameter("@price", p.Price));
+                command.Parameters.Add(new OleDbParameter("@id", p.Id));
+            }
+        }
     }
 }
