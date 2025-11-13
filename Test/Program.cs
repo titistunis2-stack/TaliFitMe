@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using ViewModel;
+using static System.Net.Mime.MediaTypeNames;
 public class Program
 {
     public static void Main(string[] args)
@@ -20,6 +21,14 @@ public class Program
         //int x = gn.SaveChanges();
         //Console.WriteLine($"{x} row were updated");
 
+        //Gender gInsert = new Gender();
+        //gInsert.Gender_name = "non-binary";
+        //gn.Insert(gInsert);
+        //int q = gn.SaveChanges();
+        //Console.WriteLine($"{q} row were inserted");
+
+
+
         //Console.ForegroundColor = ConsoleColor.Blue;
         //Console.WriteLine("Subscriptionss:");
         //Console.ResetColor();
@@ -28,11 +37,21 @@ public class Program
         //foreach (Subscription su in sList)
         //    Console.WriteLine(su.Name_of_sub);
 
-        //Subscription subscriptionToUpdate = sList[0];
-        //subscriptionToUpdate.Name_of_sub = "omer";
-        //s.Update(subscriptionToUpdate);
-        //int o = s.SaveChanges();
-        //Console.WriteLine($"{o} row were updated");
+        ////Subscription subscriptionToUpdate = sList[0];
+        ////subscriptionToUpdate.Name_of_sub = "omer";
+        ////s.Update(subscriptionToUpdate);
+        ////int o = s.SaveChanges();
+        ////Console.WriteLine($"{o} row were updated");
+
+        //Subscription sInsert = new Subscription();
+        //sInsert.Name_of_sub = "5 times a week";
+        //sInsert.Price = 600;
+        //s.Insert(sInsert);
+        //int ss = s.SaveChanges();
+        //Console.WriteLine($"{ss} row were inserted");
+
+
+
 
         //Console.WriteLine();
 
@@ -45,12 +64,30 @@ public class Program
         //    Console.WriteLine(pe.First_name);
 
 
-
         //Person personToUpdate = pList[0];
         //personToUpdate.First_name = "omer";
         //pdb.Update(personToUpdate);
         //int y = pdb.SaveChanges();
         //Console.WriteLine($"{y} row were updated");
+
+
+        //Person pInsert = new Person();
+        //pInsert.First_name = "Alex";
+        //pInsert.Last_name = "Johnson";
+        //pInsert.Telephone = "0539272552";
+        //pInsert.Num_id = "A123456789";
+        //pInsert.Email = "AlexJonag5678@gmail.com";
+        //pInsert.Born_date = new DateTime(1995, 3, 15);
+        //pInsert.Photo = "alex_photo.jpg";
+        //pInsert.User_name = "AlexJ95";
+        //pInsert.Pass = "jajajajaaj45";
+        //pInsert.Id_gender= GenderDB.SelectById(1);
+        //pdb.Insert(pInsert);
+        //int z = pdb.SaveChanges();
+        //Console.WriteLine($"{z} row were inserted");
+
+
+
 
 
         //Console.ForegroundColor = ConsoleColor.Blue;
@@ -87,15 +124,13 @@ public class Program
         //Console.WriteLine($"{c} row were updated");
 
 
-        //Console.ForegroundColor = ConsoleColor.Blue;
-        //Console.WriteLine("Trainee:");
-        //Console.ResetColor();
-        //TraineeDB e = new();
-        //TraineeList eList = e.SelectAll();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Trainee:");
+        Console.ResetColor();
+        TraineeDB e = new();
+        TraineeList eList = e.SelectAll();
         //foreach (Trainee Trainees in eList)
         //    Console.WriteLine(Trainees.Joining_date);
-
-
 
 
         //Trainee traineeToUpdate = eList[1];
@@ -103,8 +138,19 @@ public class Program
         //e.Update(traineeToUpdate);
         //int b = e.SaveChanges();
         //Console.WriteLine($"{b} row were updated");
-        ////foreach (Trainee Trainees in eList)
-        ////    Console.WriteLine(Trainees.Joining_date);
+        //foreach (Trainee Trainees in eList)
+        //    Console.WriteLine(Trainees.Joining_date);
+
+
+        Trainee teInsert = new Trainee();
+        teInsert.Health_Declaration = true;
+        teInsert.Joining_date = new DateTime(2022,7,20);
+        teInsert.Id_Sub = teInsert.Id_Sub = SubscriptionDB.SelectById(1);
+        e.Insert(teInsert);
+        int q = e.SaveChanges();
+        Console.WriteLine($"{q} row were inserted");
+        foreach (Trainee Trainees in eList)
+            Console.WriteLine(Trainees.Joining_date);
 
 
         //Console.ForegroundColor = ConsoleColor.Blue;
@@ -123,17 +169,30 @@ public class Program
         //Console.WriteLine($"{z} row were updated");
 
 
-        Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Training_registration:");
-        Console.ResetColor();
-        Training_registrationDB Training_registrations = new();
-        Training_registrationList Training_registrationList = Training_registrations.SelectAll();
-        foreach (Training_registration Training_registrationss in Training_registrationList)
-            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_time);
+        //Kinds_of_workouts kInsert = new Kinds_of_workouts();
+        //kInsert.Name_of_workout = "running";
+        //kInsert.Max_amount_of_people = 80;
+        //Kinds_of_workoutss.Insert(kInsert);
+        //int ss = Kinds_of_workoutss.SaveChanges();
+        //Console.WriteLine($"{ss} row were inserted");
+        //foreach (Kinds_of_workouts Kinds_of_workoutsss in Kinds_of_workoutsList)
+        //    Console.WriteLine(Kinds_of_workoutsss.Name_of_workout);
+
+
+
+
+
+        //Console.ForegroundColor = ConsoleColor.Blue;
+        //Console.WriteLine("Training_registration:");
+        //Console.ResetColor();
+        //Training_registrationDB Training_registrations = new();
+        //Training_registrationList Training_registrationList = Training_registrations.SelectAll();
+        //foreach (Training_registration Training_registrationss in Training_registrationList)
+        //    Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_time);
 
 
         //Training_registration training_registrationToUpdate = Training_registrationList[1];
-        //training_registrationToUpdate.Id_excWorkouts.Workout_time= new DateTime();
+        //training_registrationToUpdate.Id_excWorkouts.Workout_time = new DateTime(1899, 12, 30, 20, 30, 0, 0);
         //Training_registrations.Update(training_registrationToUpdate);
         //int ww = Training_registrations.SaveChanges();
         //Console.WriteLine($"{ww} row were updated");
@@ -141,20 +200,22 @@ public class Program
         //    Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_time);
 
 
-        Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Workouts_of_trainers:");
-        Console.ResetColor();
-        Workouts_of_trainersDB Workouts_of_trainers = new();
-        Workouts_of_trainersList Workouts_of_trainersList = Workouts_of_trainers.SelectAll();
-        foreach (Workouts_of_trainers Workouts_of_trainersss in Workouts_of_trainersList)
-            Console.WriteLine(Workouts_of_trainersss.Id_kindsOfWorkouts.Name_of_workout);
-        Workouts_of_trainers Workouts_of_trainersToUpdate = Workouts_of_trainersList[1];
-        Workouts_of_trainersToUpdate.Id_trainer.Paymet_per_hour = 6000065460;
-        Workouts_of_trainers.Update(Workouts_of_trainersToUpdate);
-        int wb = Workouts_of_trainers.SaveChanges();
-        Console.WriteLine($"{wb} row were updated");
-        foreach (Workouts_of_trainers Workouts_of_trainerss in Workouts_of_trainersList)
-            Console.WriteLine(Workouts_of_trainerss.Id_trainer.Paymet_per_hour);
+        //Console.ForegroundColor = ConsoleColor.Blue;
+        //Console.WriteLine("Workouts_of_trainers:");
+        //Console.ResetColor();
+        //Workouts_of_trainersDB Workouts_of_trainers = new();
+        //Workouts_of_trainersList Workouts_of_trainersList = Workouts_of_trainers.SelectAll();
+        //foreach (Workouts_of_trainers Workouts_of_trainersss in Workouts_of_trainersList)
+        //    Console.WriteLine(Workouts_of_trainersss.Id_kindsOfWorkouts.Name_of_workout);
+
+
+        //Workouts_of_trainers Workouts_of_trainersToUpdate = Workouts_of_trainersList[1];
+        //Workouts_of_trainersToUpdate.Id_kindsOfWorkouts.Name_of_workout = "tola";
+        //Workouts_of_trainers.Update(Workouts_of_trainersToUpdate);
+        //int wb = Workouts_of_trainers.SaveChanges();
+        //Console.WriteLine($"{wb} row were updated");
+        //foreach (Workouts_of_trainers Workouts_of_trainerss in Workouts_of_trainersList)
+        //    Console.WriteLine(Workouts_of_trainerss.Id_kindsOfWorkouts.Name_of_workout);
 
 
 

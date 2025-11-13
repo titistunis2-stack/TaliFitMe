@@ -53,7 +53,22 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Person p = entity as Person;
+            if (p != null)
+            {
+                string sqlStr = $"INSERT INTO Person( First_name, Last_name , Telephone , Num_id , Email, Born_date , Photo , User_name , Pass ,Id_gender) VALUES (@first_name, @last_name , @telephone , @num_id , @email, @born_date , @photo , @user_name , @pass ,@id_gender)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@first_name", p.First_name));
+                command.Parameters.Add(new OleDbParameter("@last_name", p.Last_name));
+                command.Parameters.Add(new OleDbParameter("@telephone", p.Telephone));
+                command.Parameters.Add(new OleDbParameter("@num_id", p.Num_id));
+                command.Parameters.Add(new OleDbParameter("@email", p.Email));
+                command.Parameters.Add(new OleDbParameter("@born_date", p.Born_date));
+                command.Parameters.Add(new OleDbParameter("@photo", p.Photo));
+                command.Parameters.Add(new OleDbParameter("@user_name", p.User_name));
+                command.Parameters.Add(new OleDbParameter("@pass", p.Pass));
+                command.Parameters.Add(new OleDbParameter("@id_gender", p.Id_gender.Id));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

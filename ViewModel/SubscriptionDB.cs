@@ -46,7 +46,14 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Subscription s = entity as Subscription;
+            if (s != null)
+            {
+                string sqlStr = $"INSERT INTO Subscription( Name_of_sub , Price) VALUES (@name_of_sub , @price)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@name_of_sub", s.Name_of_sub));
+                command.Parameters.Add(new OleDbParameter("@price", s.Price));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)

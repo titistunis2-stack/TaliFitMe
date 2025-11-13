@@ -63,6 +63,30 @@ namespace ViewModel
                 updated.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
             }
         }
+
+        protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Trainer t = entity as Trainer;
+            if (t != null)
+            {
+                string sqlStr = $"INSERT INTO Trainer( Paymet_per_hour ,Certificate, Experience , Description ) VALUES (@paymet_per_hour, @certificate , @Experience ,@description)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@paymet_per_hour", t.Paymet_per_hour));
+                command.Parameters.Add(new OleDbParameter("@certificate", t.Certificate));
+                command.Parameters.Add(new OleDbParameter("@experience", t.Experience));
+                command.Parameters.Add(new OleDbParameter("@ description", t.Description));
+
+            }
+        }
+        public override void Insert(BaseEntity entity)
+        {
+            Trainer tr = entity as Trainer;
+            if (tr != null)
+            {
+                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+            }
+        }
     }
 }
 

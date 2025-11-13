@@ -56,12 +56,12 @@ namespace ViewModel
             Training_registration t = entity as Training_registration;
             if (t != null)
             {
-                string sqlStr = $"UPDATE Training_registration" +
+                string sqlStr = $"UPDATE Training_registration " +
                     $"SET Id_trainee=@id_trainee , Id_excWorkouts=@id_excWorkouts" +
                     $" WHERE ID=@id";
                 command.CommandText = sqlStr;
-                command.Parameters.Add(new OleDbParameter("@id_trainee", t.Id_trainee));
-                command.Parameters.Add(new OleDbParameter("@id_excWorkouts", t.Id_excWorkouts));
+                command.Parameters.Add(new OleDbParameter("@id_trainee", t.Id_trainee.Id));
+                command.Parameters.Add(new OleDbParameter("@id_excWorkouts", t.Id_excWorkouts.Id));
                 command.Parameters.Add(new OleDbParameter("@id", t.Id));
             }
         }

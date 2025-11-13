@@ -50,7 +50,17 @@ namespace ViewModel
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+
+            Workouts_of_trainers wt = entity as Workouts_of_trainers;
+            if (wt != null)
+            {
+                string sqlStr = $"UPDATE Workouts_of_trainers SET Id_trainer=@id_trainer , Id_kind_of_workouts=@id_kind_of_workouts" +
+                    $" WHERE ID=@id";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id_trainer", wt.Id_trainer.Id));
+                command.Parameters.Add(new OleDbParameter("@id_kind_of_trainers", wt.Id_kindsOfWorkouts.Id));
+                command.Parameters.Add(new OleDbParameter("@id", wt.Id));
+            }
         }
     }
 }
