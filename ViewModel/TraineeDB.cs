@@ -71,12 +71,13 @@ namespace ViewModel
             Trainee t = entity as Trainee;
             if (t != null)
             {
-                string sqlStr = $"INSERT INTO Trainee( Health_Declaration , Joining_date , Id_Sub ) VALUES (@health_Declaration, @joining_date , @id_Sub)";
+                string sqlStr = $"INSERT INTO Trainee(id, health_Declaration , joining_date , id_Sub ) VALUES (@id, @health_Declaration, @joining_date , @id_Sub)";
                 command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id", t.Id));//כי יורש
                 command.Parameters.Add(new OleDbParameter("@health_Declaration", t.Health_Declaration));
                 command.Parameters.Add(new OleDbParameter("@joining_date", t.Joining_date));
                 command.Parameters.Add(new OleDbParameter("@id_Sub", t.Id_Sub.Id));
-
+                
             }
         }
         public override void Insert(BaseEntity entity)
@@ -85,7 +86,7 @@ namespace ViewModel
             if (t != null)
             {
                 inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
-                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+                inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
             }
         }
 

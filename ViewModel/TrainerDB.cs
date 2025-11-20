@@ -69,8 +69,9 @@ namespace ViewModel
             Trainer t = entity as Trainer;
             if (t != null)
             {
-                string sqlStr = $"INSERT INTO Trainer( Paymet_per_hour ,Certificate, Experience , Description ) VALUES (@paymet_per_hour, @certificate , @Experience ,@description)";
+                string sqlStr = $"INSERT INTO Trainer( Id, Paymet_per_hour ,Certificate, Experience , Description ) VALUES (@paymet_per_hour, @certificate , @Experience ,@description, @id)";
                 command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id", t.Id));
                 command.Parameters.Add(new OleDbParameter("@paymet_per_hour", t.Paymet_per_hour));
                 command.Parameters.Add(new OleDbParameter("@certificate", t.Certificate));
                 command.Parameters.Add(new OleDbParameter("@experience", t.Experience));
@@ -84,7 +85,7 @@ namespace ViewModel
             if (tr != null)
             {
                 inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
-                inserted.Add(new ChangeEntity(base.CreateInsertdSQL, entity));
+                inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
             }
         }
     }

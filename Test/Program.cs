@@ -6,14 +6,14 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        //Console.ForegroundColor = ConsoleColor.Blue;
-        //Console.WriteLine("Genders:");
-        //Console.ResetColor();
-        //GenderDB gn = new();
-        //GenderList gList = gn.SelectAll();
-        //foreach (Gender g in gList)
-        //    Console.WriteLine(g.Gender_name);
-        //Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Genders:");
+        Console.ResetColor();
+        GenderDB gn = new();
+        GenderList gList = gn.SelectAll();
+        foreach (Gender g in gList)
+            Console.WriteLine(g.Gender_name);
+        Console.WriteLine();
 
         //Gender genderToUpdate = gList[0];
         //genderToUpdate.Gender_name = "omer";
@@ -96,7 +96,7 @@ public class Program
         //TrainerDB Trainers = new();
         //TrainerList hList = Trainers.SelectAll();
         //foreach (Trainer Trainerss in hList)
-        //    Console.WriteLine(Trainerss.Paymet_per_hour);
+        //    Console.WriteLine(Trainerss.Certificate);
 
 
         //Trainer trainerToUpdate = hList[0];
@@ -108,13 +108,28 @@ public class Program
         //    Console.WriteLine(Trainerss.Paymet_per_hour);
 
 
-        //Console.ForegroundColor = ConsoleColor.Blue;
-        //Console.WriteLine("List_of_Exc_workouts:");
-        //Console.ResetColor();
-        //List_of_Exc_workoutsDB l = new();
-        //List_of_Exc_workoutsList lList = l.SelectAll();
-        //foreach (List_of_Exc_workouts listofexc in lList)
-        //    Console.WriteLine(listofexc.Workout_date);
+        //Trainer tInsert = new Trainer() { Last_name = "Choen", First_name = "Alona", Telephone = "0587624131", Born_date = new DateTime(1988, 3, 9), Num_id = "783261563", Email = "AlonaCh@gmail.com", Pass = "Alona2397326", User_name = "AlonaChoen23", Photo = "hgfhhk", Id_gender = gList[0] };
+        //tInsert.Paymet_per_hour = 890;
+        //tInsert.Certificate ="Yoga" ;
+        //tInsert.Experience = true;
+        //tInsert.Description = "teaching for 22 years";
+        //Trainers.Insert(tInsert);
+        //int q = Trainers.SaveChanges();
+        //Console.WriteLine($"{q} row were inserted");
+        //hList = Trainers.SelectAll();
+        //foreach (Trainer Trainerss in hList)
+        //    Console.WriteLine(Trainerss.Certificate);
+
+
+
+
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("List_of_Exc_workouts:");
+        Console.ResetColor();
+        List_of_Exc_workoutsDB l = new();
+        List_of_Exc_workoutsList lList = l.SelectAll();
+        foreach (List_of_Exc_workouts listofexc in lList)
+            Console.WriteLine(listofexc.Workout_time);
 
 
         //List_of_Exc_workouts list_of_Exc_workoutsToUpdate = lList[0];
@@ -123,12 +138,31 @@ public class Program
         //int c = l.SaveChanges();
         //Console.WriteLine($"{c} row were updated");
 
+        //TraineeDB trainee = new TraineeDB();
+        //TraineeList trainee1 = trainee.SelectAll();
+        //Trainee tr = trainee1[0];
+        //tr.Telephone = "90487367";
+        //List_of_Exc_workouts lInsert = new List_of_Exc_workouts() {  };
+        //lInsert.Id_trainer=tr;
+        //lInsert.Id_kindOf_workouts.Name_of_workout = "flying";
+        //lInsert.Workout_date = new DateTime(2024, 9, 10);
+        //lInsert.Workout_time = new DateTime(1899, 12, 30, 18, 0, 0);
+        //l.Insert(lInsert);
+        //int ss = l.SaveChanges();
+        ////Console.WriteLine($"{ss} row were inserted");
+        //lList = l.SelectAll();
+        //foreach (List_of_Exc_workouts listofexc in lList)
+        //    Console.WriteLine(listofexc.Workout_time);
 
-        Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Trainee:");
-        Console.ResetColor();
-        TraineeDB e = new();
-        TraineeList eList = e.SelectAll();
+
+
+
+
+        //Console.ForegroundColor = ConsoleColor.Blue;
+        //Console.WriteLine("Trainee:");
+        //Console.ResetColor();
+        //TraineeDB e = new();
+        //TraineeList eList = e.SelectAll();
         //foreach (Trainee Trainees in eList)
         //    Console.WriteLine(Trainees.Joining_date);
 
@@ -142,15 +176,16 @@ public class Program
         //    Console.WriteLine(Trainees.Joining_date);
 
 
-        Trainee teInsert = new Trainee();
-        teInsert.Health_Declaration = true;
-        teInsert.Joining_date = new DateTime(2022,7,20);
-        teInsert.Id_Sub = teInsert.Id_Sub = SubscriptionDB.SelectById(1);
-        e.Insert(teInsert);
-        int q = e.SaveChanges();
-        Console.WriteLine($"{q} row were inserted");
-        foreach (Trainee Trainees in eList)
-            Console.WriteLine(Trainees.Joining_date);
+        //Trainee teInsert = new Trainee() { Last_name = "Choen", First_name = "Alona", Telephone = "0587624131", Born_date =new DateTime(1988, 3, 9), Num_id = "783261563", Email = "AlonaCh@gmail.com", Pass = "Alona2397326", User_name = "AlonaChoen23", Photo = "hgfhhk" ,Id_gender=gList[0] };
+        //teInsert.Health_Declaration = true;
+        //teInsert.Joining_date = new DateTime(2022, 7, 20);
+        //teInsert.Id_Sub = teInsert.Id_Sub = SubscriptionDB.SelectById(1);
+        //e.Insert(teInsert);
+        //int w = e.SaveChanges();
+        //Console.WriteLine($"{w} row were inserted");
+        //eList = e.SelectAll();
+        //foreach (Trainee Trainee in eList)
+        //    Console.WriteLine(Trainee.Joining_date);
 
 
         //Console.ForegroundColor = ConsoleColor.Blue;

@@ -9,8 +9,8 @@ namespace Model
     public class Workouts_of_trainers : BaseEntity
     {
         private Trainer id_trainer;
-        private Kinds_of_workouts id_kindsOfWorkouts;
+        private Kinds_of_workouts id_kind_of_workouts;
         public Trainer Id_trainer { get => id_trainer; set => id_trainer = value; }
-        public Kinds_of_workouts Id_kindsOfWorkouts { get => id_kindsOfWorkouts; set => id_kindsOfWorkouts = value; }
+        public Kinds_of_workouts Id_kind_of_workouts { get => id_kind_of_workouts; set => id_kind_of_workouts = value; }
     }
 }

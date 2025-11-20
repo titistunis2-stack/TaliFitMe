@@ -20,7 +20,7 @@ namespace ViewModel
         {
            Workouts_of_trainers w = entity as Workouts_of_trainers;
            w.Id_trainer = TrainerDB.SelectById((int)reader["id_trainer"]);
-           w.Id_kindsOfWorkouts= Kinds_of_workoutsDB.SelectById((int)reader["id_kind_of_workouts"]);
+           w.Id_kind_of_workouts= Kinds_of_workoutsDB.SelectById((int)reader["id_kind_of_workouts"]);
             base.CreateModel(entity);
             return w;
         }
@@ -45,7 +45,15 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Workouts_of_trainers p = entity as Workouts_of_trainers;
+            if (p != null)
+            {
+                string sqlStr = $"INSERT INTO  Workouts_of_trainers( Id_trainer, Id_kind_of_workouts) VALUES (@id_trainer, @id_kind_of_workouts)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id_trainer", p.Id_trainer.Id));
+                command.Parameters.Add(new OleDbParameter("@id_kind_of_workouts", p.Id_kind_of_workouts.Id));
+
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
@@ -58,7 +66,7 @@ namespace ViewModel
                     $" WHERE ID=@id";
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@id_trainer", wt.Id_trainer.Id));
-                command.Parameters.Add(new OleDbParameter("@id_kind_of_trainers", wt.Id_kindsOfWorkouts.Id));
+                command.Parameters.Add(new OleDbParameter("@id_kind_of_trainers", wt.Id_kind_of_workouts.Id));
                 command.Parameters.Add(new OleDbParameter("@id", wt.Id));
             }
         }

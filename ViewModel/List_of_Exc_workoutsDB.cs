@@ -50,7 +50,16 @@ namespace ViewModel
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            List_of_Exc_workouts lw = entity as List_of_Exc_workouts;
+            if (lw != null)
+            {
+                string sqlStr = $"INSERT INTO List_of_Exc_workouts( Id_kindOf_workouts, Workout_date, Workout_time, Id_trainer) VALUES (@id_kindOf_workouts, @workout_date, @workout_time, @id_trainer)";
+                command.CommandText = sqlStr;
+                command.Parameters.Add(new OleDbParameter("@id_trainer", lw.Id_trainer.Id));
+                command.Parameters.Add(new OleDbParameter("@id_kindOf_workouts", lw.Id_kindOf_workouts.Id));
+                command.Parameters.Add(new OleDbParameter("@workout_date", lw.Workout_time));
+                command.Parameters.Add(new OleDbParameter("@workout_date", lw.Workout_date));
+            }
         }
 
         protected override void CreateUpdatedSQL(BaseEntity entity, OleDbCommand cmd)
