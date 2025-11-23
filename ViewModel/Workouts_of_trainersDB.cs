@@ -40,15 +40,25 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            throw new NotImplementedException();
+            Workouts_of_trainers w = entity as Workouts_of_trainers;
+            if (w != null)
+            {
+                string sqlStr = "DELETE FROM Workouts_of_trainers where id=@pid";
+
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@pid", w.Id));
+
+            }
         }
+        
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
             Workouts_of_trainers p = entity as Workouts_of_trainers;
             if (p != null)
             {
-                string sqlStr = $"INSERT INTO  Workouts_of_trainers( Id_trainer, Id_kind_of_workouts) VALUES (@id_trainer, @id_kind_of_workouts)";
+                string sqlStr = $"INSERT INTO  Workouts_of_trainers ( Id_trainer, Id_kind_of_workouts) VALUES (@id_trainer, @id_kind_of_workouts)";
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@id_trainer", p.Id_trainer.Id));
                 command.Parameters.Add(new OleDbParameter("@id_kind_of_workouts", p.Id_kind_of_workouts.Id));

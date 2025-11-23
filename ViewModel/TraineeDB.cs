@@ -89,6 +89,30 @@ namespace ViewModel
                 inserted.Add(new ChangeEntity(this.CreateInsertdSQL, entity));
             }
         }
+        protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
+        {
+            Trainee te = entity as Trainee;
+            if (te != null)
+            {
+                string sqlStr = "DELETE FROM Trainee where id=@pid";
+
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@pid", te.Id));
+
+
+            }
+        }
+
+        public virtual void Delete(BaseEntity entity)
+        {
+            BaseEntity reqEntity = this.NewEntity();
+            if (entity != null & entity.GetType() == reqEntity.GetType())
+            {
+                deleted.Add(new ChangeEntity(this.CreateDeletedSQL, entity));
+                deleted.Add(new ChangeEntity(base.CreateUpdatedSQL, entity));
+            }
+        }
 
     }
 }

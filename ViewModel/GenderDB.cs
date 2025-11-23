@@ -40,8 +40,18 @@ namespace ViewModel
 
         protected override void CreateDeletedSQL(BaseEntity entity, OleDbCommand cmd)
         {
-            
+            Gender g = entity as Gender;
+            if (g != null)
+            {
+                string sqlStr = "DELETE FROM Gender where id=@pid";
+
+                command.CommandText = sqlStr;
+
+                command.Parameters.Add(new OleDbParameter("@pid", g.Id));
+
+            }
         }
+
 
         protected override void CreateInsertdSQL(BaseEntity entity, OleDbCommand cmd)
         {
