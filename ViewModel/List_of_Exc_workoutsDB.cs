@@ -20,7 +20,6 @@ namespace ViewModel
         {
             List_of_Exc_workouts lw = entity as List_of_Exc_workouts;
             lw.Workout_date = DateTime.Parse(reader["workout_date"].ToString());
-            lw.Workout_time = DateTime.Parse(reader["workout_time"].ToString());
             int x= (int)reader["id_trainer"];
             lw.Id_trainer = TrainerDB.SelectById((int)reader["id_trainer"]);
             lw.Id_kindOf_workouts = Kinds_of_workoutsDB.SelectById((int)reader["id_kindOf_workouts"]);
@@ -62,15 +61,13 @@ namespace ViewModel
             if (lw != null)
             {
              //   string sqlStr = $"INSERT INTO List_of_Exc_workouts ( Id_kindOf_workouts, Workout_date, Workout_time, Id_trainer) VALUES (@id_kindOf_workouts, @workout_date, @workout_time, @id_trainer)";
-                string sqlStr = $"INSERT INTO List_of_Exc_workouts ( Id_kindOf_workouts, Workout_date , Workout_time , Id_trainer) VALUES (@id_kindOf_workouts , @workout_date , @workout_time , @id_trainer)";
+                string sqlStr = $"INSERT INTO List_of_Exc_workouts ( Id_kindOf_workouts, Workout_date , Id_trainer) VALUES " +
+                    $"(@id_kindOf_workouts , @workout_date , @id_trainer)";
                 command.CommandText = sqlStr;
                  command.Parameters.Add(new OleDbParameter("@id_kindOf_workouts", lw.Id_kindOf_workouts.Id));
                 OleDbParameter oleDbParameter = new OleDbParameter("@workout_date", lw.Workout_date);
                 oleDbParameter.Value = lw.Workout_date;
                 command.Parameters.Add(oleDbParameter);
-                OleDbParameter oleDbParameter1 = new OleDbParameter("@workout_time", lw.Workout_time);
-                oleDbParameter1.Value = lw.Workout_time;
-                command.Parameters.Add(oleDbParameter1);
                 command.Parameters.Add(new OleDbParameter("@id_trainer", lw.Id_trainer.Id));
 
             }
@@ -82,16 +79,13 @@ namespace ViewModel
             if (l != null)
             {
                 string sqlStr = $"UPDATE List_of_Exc_workouts " +
-                    $"SET Id_kindOf_workouts=@id_kindOf_workouts,Workout_date=@workout_date,Workout_time=@workout_time" +" Id_trainer=@id_trainer" +
+                    $"SET Id_kindOf_workouts=@id_kindOf_workouts,Workout_date=@workout_date," +" Id_trainer=@id_trainer" +
                     $" WHERE ID=@id";
                 command.CommandText = sqlStr;
                 command.Parameters.Add(new OleDbParameter("@id_kindOf_workouts", l.Id_kindOf_workouts.Id));
                 OleDbParameter oleDbParameter = new OleDbParameter("@workout_date", l.Workout_date);
                 oleDbParameter.Value = l.Workout_date;
                 command.Parameters.Add(oleDbParameter);
-                OleDbParameter oleDbParameter1 = new OleDbParameter("@workout_time", l.Workout_time);
-                oleDbParameter1.Value = l.Workout_time;
-                command.Parameters.Add(oleDbParameter1);
 
                 var x = l;
                 command.Parameters.Add(new OleDbParameter("@id_trainer", l.Id_trainer.Id));

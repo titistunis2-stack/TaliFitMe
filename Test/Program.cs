@@ -178,26 +178,26 @@ public class Program
             Console.WriteLine(listofexc.Workout_date);
 
 
-        //List_of_Exc_workouts list_of_Exc_workoutsToUpdate = lList[0];
-        //list_of_Exc_workoutsToUpdate.Workout_date = new DateTime(2024, 8, 5);
-        //list_of_Exc_workoutsToUpdate.Id_trainer = hList[0];
-        //l.Update(list_of_Exc_workoutsToUpdate);
-        //int c = l.SaveChanges();
-        //Console.WriteLine($"{c} row were updated");
-        //foreach (List_of_Exc_workouts listofexc in lList)
-        //    Console.WriteLine(listofexc.Workout_date);
+        List_of_Exc_workouts list_of_Exc_workoutsToUpdate = lList[0];
+        list_of_Exc_workoutsToUpdate.Workout_date = new DateTime(2025, 1, 1, 8,30,0);
+        list_of_Exc_workoutsToUpdate.Id_trainer = hList[1];
+        l.Update(list_of_Exc_workoutsToUpdate);
+        int c = l.SaveChanges();
+        Console.WriteLine($"{c} row were updated");
+        foreach (List_of_Exc_workouts listofexc in lList)
+            Console.WriteLine(listofexc.Workout_date);
 
-        //List_of_Exc_workouts lInsert = new List_of_Exc_workouts() { };
-        //lInsert.Id_trainer = TrainerDB.SelectById(3);
-        //lInsert.Id_kindOf_workouts = Kinds_of_workoutsDB.SelectById(3);
-        //lInsert.Workout_date = new DateTime(2024, 9, 10);
-        //lInsert.Workout_time = new DateTime(1899, 12, 30, 18, 0, 0);
-        //l.Insert(lInsert);
-        //int ss = l.SaveChanges();
-        //Console.WriteLine($"{ss} row were inserted");
-        //lList = l.SelectAll();
-        //foreach (List_of_Exc_workouts listofexc in lList)
-        //    Console.WriteLine(listofexc.Workout_date);
+        
+        List_of_Exc_workouts lInsert = new List_of_Exc_workouts() { };
+        lInsert.Id_trainer = TrainerDB.SelectById(3);
+        lInsert.Id_kindOf_workouts = Kinds_of_workoutsDB.SelectById(3);
+        lInsert.Workout_date = new DateTime(2024, 9, 10,12,30,0);
+        l.Insert(lInsert);
+        int ss1 = l.SaveChanges();
+        Console.WriteLine($"{ss1} row were inserted");
+        lList = l.SelectAll();
+        foreach (List_of_Exc_workouts listofexc in lList)
+            Console.WriteLine(listofexc.Workout_date);
 
 
         Console.WriteLine("\nDelete");
@@ -208,7 +208,7 @@ public class Program
         Console.WriteLine("List_of_Exc_workouts after delete: ");
         lList = l.SelectAll();
         foreach (List_of_Exc_workouts eetrr in lList)
-            Console.WriteLine(eetrr.Workout_time);
+            Console.WriteLine(eetrr.Workout_date);
 
 
         Console.ForegroundColor = ConsoleColor.Blue;
@@ -265,32 +265,32 @@ public class Program
             Console.WriteLine(Kinds_of_workoutsss.Name_of_workout);
 
 
-        //Kinds_of_workouts kinds_of_workoutsToUpdate = Kinds_of_workoutsList[1];
-        //kinds_of_workoutsToUpdate.Name_of_workout = "omer";
-        //Kinds_of_workoutss.Update(kinds_of_workoutsToUpdate);
-        //int z = Kinds_of_workoutss.SaveChanges();
-        //Console.WriteLine($"{z} row were updated");
+        Kinds_of_workouts kinds_of_workoutsToUpdate = Kinds_of_workoutsList[1];
+        kinds_of_workoutsToUpdate.Name_of_workout = "omer";
+        Kinds_of_workoutss.Update(kinds_of_workoutsToUpdate);
+        z = Kinds_of_workoutss.SaveChanges();
+        Console.WriteLine($"{z} row were updated");
 
 
-        //Kinds_of_workouts kInsert = new Kinds_of_workouts();
-        //kInsert.Name_of_workout = "running";
-        //kInsert.Max_amount_of_people = 80;
-        //Kinds_of_workoutss.Insert(kInsert);
-        //int ss = Kinds_of_workoutss.SaveChanges();
-        //Console.WriteLine($"{ss} row were inserted");
-        //foreach (Kinds_of_workouts Kinds_of_workoutsss in Kinds_of_workoutsList)
-        //    Console.WriteLine(Kinds_of_workoutsss.Name_of_workout);
+        Kinds_of_workouts kInsert = new Kinds_of_workouts();
+        kInsert.Name_of_workout = "running";
+        kInsert.Max_amount_of_people = 80;
+        Kinds_of_workoutss.Insert(kInsert);
+        ss = Kinds_of_workoutss.SaveChanges();
+        Console.WriteLine($"{ss} row were inserted");
+        foreach (Kinds_of_workouts Kinds_of_workoutsss in Kinds_of_workoutsList)
+            Console.WriteLine(Kinds_of_workoutsss.Name_of_workout);
 
 
-        //Console.WriteLine("\nDelete");
-        //Kinds_of_workouts kinds_of_workoutsToDelete = Kinds_of_workoutsList.Last();
-        //Kinds_of_workoutss.Delete(kinds_of_workoutsToDelete);
-        //int kw = Kinds_of_workoutss.SaveChanges();
-        //Console.WriteLine($"{kw} rows were deleted");
-        //Console.WriteLine("Subscriptions after delete: ");
-        //Kinds_of_workoutsList = Kinds_of_workoutss.SelectAll();
-        //foreach (Kinds_of_workouts kk in Kinds_of_workoutsList)
-        //    Console.WriteLine(kk.Name_of_workout);
+        Console.WriteLine("\nDelete");
+        Kinds_of_workouts kinds_of_workoutsToDelete = Kinds_of_workoutsList.Last();
+        Kinds_of_workoutss.Delete(kinds_of_workoutsToDelete);
+        int kw = Kinds_of_workoutss.SaveChanges();
+        Console.WriteLine($"{kw} rows were deleted");
+        Console.WriteLine("Subscriptions after delete: ");
+        Kinds_of_workoutsList = Kinds_of_workoutss.SelectAll();
+        foreach (Kinds_of_workouts kk in Kinds_of_workoutsList)
+            Console.WriteLine(kk.Name_of_workout);
 
 
 
@@ -300,16 +300,16 @@ public class Program
         Training_registrationDB Training_registrations = new();
         Training_registrationList Training_registrationList = Training_registrations.SelectAll();
         foreach (Training_registration Training_registrationss in Training_registrationList)
-            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_time);
+            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_date);
 
 
         Training_registration training_registrationToUpdate = Training_registrationList[1];
-        training_registrationToUpdate.Id_excWorkouts.Workout_time = new DateTime(1899, 12, 30, 20, 30, 0, 0);
+        training_registrationToUpdate.Id_excWorkouts.Workout_date = new DateTime(1899, 12, 30, 20, 30, 0, 0);
         Training_registrations.Update(training_registrationToUpdate);
         int ww = Training_registrations.SaveChanges();
         Console.WriteLine($"{ww} row were updated");
         foreach (Training_registration Training_registrationss in Training_registrationList)
-            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_time);
+            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_date);
 
 
         Training_registration trInsert = new Training_registration();
@@ -320,7 +320,7 @@ public class Program
         Console.WriteLine($"{qq} row were inserted");
         Training_registrationList = Training_registrations.SelectAll();
         foreach (Training_registration Training_registrationss in Training_registrationList)
-            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_time);
+            Console.WriteLine(Training_registrationss.Id_excWorkouts.Workout_date);
 
         Console.WriteLine("\nDelete");
         Training_registration training_registrationToDelete = Training_registrationList.Last();
@@ -330,7 +330,7 @@ public class Program
         Console.WriteLine("Training_registration after delete: ");
         Training_registrationList = Training_registrations.SelectAll();
         foreach (Training_registration trrr in Training_registrationList)
-            Console.WriteLine(trrr.Id_excWorkouts.Workout_time);
+            Console.WriteLine(trrr.Id_excWorkouts.Workout_date);
 
 
 
@@ -390,6 +390,6 @@ public class Program
 
     }
 }
-    
-    
+
+
 
