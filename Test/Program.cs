@@ -179,7 +179,7 @@ public class Program
 
 
         List_of_Exc_workouts list_of_Exc_workoutsToUpdate = lList[0];
-        list_of_Exc_workoutsToUpdate.Workout_date = new DateTime(2025, 1, 1, 8,30,0);
+        list_of_Exc_workoutsToUpdate.Workout_date = new DateTime(2025, 1, 1, 8, 30, 0);
         list_of_Exc_workoutsToUpdate.Id_trainer = hList[1];
         l.Update(list_of_Exc_workoutsToUpdate);
         int c = l.SaveChanges();
@@ -187,11 +187,11 @@ public class Program
         foreach (List_of_Exc_workouts listofexc in lList)
             Console.WriteLine(listofexc.Workout_date);
 
-        
+
         List_of_Exc_workouts lInsert = new List_of_Exc_workouts() { };
         lInsert.Id_trainer = TrainerDB.SelectById(3);
         lInsert.Id_kindOf_workouts = Kinds_of_workoutsDB.SelectById(3);
-        lInsert.Workout_date = new DateTime(2024, 9, 10,12,30,0);
+        lInsert.Workout_date = new DateTime(2024, 9, 10, 12, 30, 0);
         l.Insert(lInsert);
         int ss1 = l.SaveChanges();
         Console.WriteLine($"{ss1} row were inserted");
@@ -250,7 +250,6 @@ public class Program
         eList = e.SelectAll();
         foreach (Trainee trre in eList)
             Console.WriteLine(trre.Joining_date);
-
 
 
 
@@ -335,7 +334,6 @@ public class Program
 
 
 
-
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("Workouts_of_trainers:");
         Console.ResetColor();
@@ -373,20 +371,6 @@ public class Program
         Workouts_of_trainersList = Workouts_of_trainers.SelectAll();
         foreach (Workouts_of_trainers wtrr in Workouts_of_trainersList)
             Console.WriteLine(wtrr.Id_kind_of_workouts.Name_of_workout);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
