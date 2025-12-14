@@ -10,7 +10,7 @@ namespace Fitali_API.Controllers
     {
         [HttpGet]
         [ActionName("GenderSelector")]
-        public GenderList SelectAllGenders()
+        public GenderList SelectAllGender()
         {
             GenderDB db=new GenderDB();
             GenderList genders=db.SelectAll();
