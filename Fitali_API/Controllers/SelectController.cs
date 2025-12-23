@@ -17,6 +17,7 @@ namespace Fitali_API.Controllers
             return genders;
         }
         [HttpPost]
+        [ActionName("InsertAGender")]
         public int InsertAGender([FromBody] Gender gender)
         {
             GenderDB db= new GenderDB();
@@ -25,6 +26,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteAGender")]
         public int DeleteAGender(int id)
         {
             Gender gender = GenderDB.SelectById(id);
@@ -34,6 +36,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateAGender")]
         public void UpdateAGender([FromBody] Gender gender)
         {
             GenderDB db=new GenderDB();
@@ -51,6 +54,7 @@ namespace Fitali_API.Controllers
             return persons;
         }
         [HttpPost]
+        [ActionName("InsertAPerson")]
         public int InsertAPerson(Person p)
         {
             PersonDB db = new PersonDB();
@@ -58,7 +62,8 @@ namespace Fitali_API.Controllers
             int x = db.SaveChanges();
             return x;
         }
-        [HttpDelete("{id}")]                   
+        [HttpDelete("{id}")]
+        [ActionName("DeleteAPerson")]
         public int DeleteAPerson(int id)
         {
             Person person = PersonDB.SelectById(id);
@@ -68,6 +73,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateAPerson")]
         public void UpdateAPerson([FromBody] Person person)
         {
             PersonDB db = new PersonDB();
@@ -84,6 +90,7 @@ namespace Fitali_API.Controllers
             return subscription;
         }
         [HttpPost]
+        [ActionName("InsertASubscription")]
         public int InsertASubscription(Subscription s)
         {
             SubscriptionDB db = new SubscriptionDB();
@@ -92,6 +99,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteASubscription")]
         public int DeleteASubscription(int id)
         {
             Subscription subscription = SubscriptionDB.SelectById(id);
@@ -101,6 +109,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateASubscription")]
         public void UpdateASubscription([FromBody] Subscription subscription)
         {
             SubscriptionDB db = new SubscriptionDB();
@@ -118,6 +127,7 @@ namespace Fitali_API.Controllers
             return trainers;
         }
         [HttpPost]
+        [ActionName("InsertATrainer")]
         public int InsertATrainer(Trainer t)
         {
             TrainerDB db = new TrainerDB();
@@ -126,6 +136,8 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteATrainer")]
+
         public int DeleteATrainer(int id)
         {
             Trainer trainer = TrainerDB.SelectById(id);
@@ -135,6 +147,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateATrainer")]
         public void UpdateATrainer([FromBody] Trainer trainer)
         {
             TrainerDB db = new TrainerDB();
@@ -150,6 +163,7 @@ namespace Fitali_API.Controllers
             return trainees;
         }
         [HttpPost]
+        [ActionName("InsertATrainee")]
         public int InsertATrainee(Trainee te)
         {
             TraineeDB db = new TraineeDB();
@@ -158,6 +172,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteATrainee")]
         public int DeleteATrainee(int id)
         {
             Trainee trainee = TraineeDB.SelectById(id);
@@ -167,6 +182,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateATrainee")]
         public void UpdateATrainee([FromBody] Trainee trainee)
         {
             TraineeDB db = new TraineeDB();
@@ -182,6 +198,7 @@ namespace Fitali_API.Controllers
             return training_registrations;
         }
         [HttpPost]
+        [ActionName("InsertATraining_registration")]
         public int InsertATraining_registration(Training_registration tr)
         {
             Training_registrationDB db = new Training_registrationDB();
@@ -190,6 +207,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteATraining_registration")]
         public int DeleteATraining_registration(int id)
         {
             Training_registration training_registration = Training_registrationDB.SelectById(id);
@@ -199,6 +217,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateATraining_registration")]
         public void UpdateATraining_registration([FromBody] Training_registration training_registration)
         {
             Training_registrationDB db = new Training_registrationDB();
@@ -215,6 +234,8 @@ namespace Fitali_API.Controllers
             return workouts_of_trainerss;
         }
         [HttpPost]
+        [ActionName("InsertAWorkouts_of_trainers")]
+
         public int InsertAWorkouts_of_trainers(Workouts_of_trainers w)
         {
             Workouts_of_trainersDB db = new Workouts_of_trainersDB();
@@ -223,6 +244,8 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteAWorkouts_of_trainers")]
+
         public int DeleteAWorkouts_of_trainers(int id)
         {
             Workouts_of_trainers workouts_of_trainers = Workouts_of_trainersDB.SelectById(id);
@@ -232,6 +255,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpPut]
+        [ActionName("UpdateAWorkouts_of_trainers")]
         public void UpdateAWorkouts_of_trainers([FromBody] Workouts_of_trainers workouts_of_trainers)
         {
             Workouts_of_trainersDB db = new Workouts_of_trainersDB();
@@ -248,6 +272,7 @@ namespace Fitali_API.Controllers
             return kinds_of_workoutss;
         }
         [HttpPost]
+        [ActionName("InsertAKinds_of_workouts")]
         public int InsertAKinds_of_workouts(Kinds_of_workouts kw)
         {
             Kinds_of_workoutsDB db = new Kinds_of_workoutsDB();
@@ -256,6 +281,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteAKinds_of_workouts")]
         public int DeleteAKinds_of_workouts(int id)
         {
             Kinds_of_workouts kinds_of_workouts = Kinds_of_workoutsDB.SelectById(id);
@@ -266,6 +292,7 @@ namespace Fitali_API.Controllers
 
         }
         [HttpPut]
+        [ActionName("UpdateAKinds_of_workouts")]
         public void UpdateAKinds_of_workouts([FromBody] Kinds_of_workouts kinds_of_workouts)
         {
             Kinds_of_workoutsDB db = new Kinds_of_workoutsDB();
@@ -284,6 +311,7 @@ namespace Fitali_API.Controllers
             return list_of_Exc_workoutss;
         }
         [HttpPost]
+        [ActionName("InsertAList_of_Exc_workouts")]
         public int InsertAList_of_Exc_workouts(List_of_Exc_workouts l)
         {
             List_of_Exc_workoutsDB db = new List_of_Exc_workoutsDB();
@@ -292,6 +320,7 @@ namespace Fitali_API.Controllers
             return x;
         }
         [HttpDelete("{id}")]
+        [ActionName("DeleteAList_of_Exc_workouts")]
         public int DeleteAList_of_Exc_workouts(int id)
         {
             List_of_Exc_workouts list_of_Exc_workouts = List_of_Exc_workoutsDB.SelectById(id);
@@ -302,6 +331,7 @@ namespace Fitali_API.Controllers
 
         }
         [HttpPut]
+        [ActionName("UpdateAList_of_Exc_workouts")]
         public void UpdateAList_of_Exc_workouts([FromBody] List_of_Exc_workouts list_of_Exc_workouts)
         {
             List_of_Exc_workoutsDB db = new List_of_Exc_workoutsDB();
