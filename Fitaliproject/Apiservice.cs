@@ -14,7 +14,7 @@ namespace Service
         public HttpClient client;
         public Apiservice()
         {
-          uri = "http://localhost:5278";
+          uri = "https://ddxxd6mm-5278.euw.devtunnels.ms/"/*"http://localhost:5278"*/;
             client = new HttpClient();
             client.BaseAddress = new Uri(uri);
         }
@@ -157,7 +157,7 @@ namespace Service
         }
         public async Task<int> DeleteATraining_registration(int id)
         {
-            return (await client.DeleteAsync("api/Insert/DeleteATraining_registration/" + id)).IsSuccessStatusCode ? 1 : 0;
+            return (await client.DeleteAsync("api/Select/DeleteATraining_registration/" + id)).IsSuccessStatusCode ? 1 : 0;
         }
         public async Task<int> InsertATraining_registration(Training_registration training_registration)
         {
