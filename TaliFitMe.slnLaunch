@@ -1,0 +1,12 @@
+[
+  {
+    "Name": "API server",
+    "Projects": [
+      {
+        "Path": "Fitali_API\\Fitali_API.csproj",
+        "Action": "Start",
+        "DebugTarget": "http"
+      }
+    ]
+  }
+]
